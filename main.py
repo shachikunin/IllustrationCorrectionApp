@@ -39,7 +39,11 @@ reviewerList = [
 
 def make_image(image_url):
       
-      checkpoint = ','.join(st.session_state.checkpoint)
+      
+      if len(st.session_state.checkpoint) > 0:
+            checkpoint = ','.join(st.session_state.checkpoint)
+      else:
+            checkpoint = "全体的なバランス"
       start = time.time()  # 現在時刻（処理開始前）を取得
       response = client.chat.completions.create(
       model="gpt-4-vision-preview",
